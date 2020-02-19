@@ -6,7 +6,6 @@ CtrlrJeux::CtrlrJeux()
 {
 	int hauteur = vue.getHauteur();
 	int largeur = vue.getLargeur();
-	//char afficher[hauteur][largeur];
 }
 CtrlrJeux::~CtrlrJeux()
 {
@@ -14,30 +13,8 @@ CtrlrJeux::~CtrlrJeux()
 }
 void CtrlrJeux:: ActionDeplacer(int direction)
 {
-	int position = personnage.getPosition();
 	int largeur = vue.getLargeur();
-	if (direction == gauche)
-	{
-		if (position == 0)
-		{
-			position = largeur;
-		}
-		else
-		{
-			position--;
-		}
-	}
-	else
-	{
-		if (position == largeur)
-		{
-			position = 0;
-		}
-		else
-		{
-			position++;
-		}
-	}
+	personnage.deplacer(direction, largeur);
 }
 
 void CtrlrJeux::Pause()

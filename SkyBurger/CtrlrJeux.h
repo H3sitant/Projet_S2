@@ -14,6 +14,5 @@ private:
 	VueJeux vue;
 	Personnage personnage;
 	Condiment condiment;
-	//char afficher[][];
 };
 
