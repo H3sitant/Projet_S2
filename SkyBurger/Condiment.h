@@ -1,6 +1,10 @@
 #pragma once
 #include <ostream>
 using namespace std;
+struct Point {
+	int x;
+	int y;
+};
 class Condiment
 {
 public:
@@ -17,8 +21,5 @@ private:
 	Point position;
 };
 
-struct Point {
-	int x;
-	int y;
-};
+
 

@@ -53,7 +53,5 @@ void Personnage::deplacer(int direction,int largeur)
 }
 int Personnage::getHauteur()
 {
-	int hauteur;
-	hauteur=
-	return hauteur;
+	return condiments.top().getPosition().y;
 }
