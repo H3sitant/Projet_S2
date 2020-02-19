@@ -13,10 +13,68 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Fichiers sources\Modele">
+      <UniqueIdentifier>{5a9d2b58-ac56-4ec9-9694-7419871df22d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Vue">
+      <UniqueIdentifier>{a5dbc9dc-79d3-4453-af3a-014bf5869910}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Controleur">
+      <UniqueIdentifier>{ea3e81bf-8156-4389-922a-64a43f142282}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SkyBurger.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="Personnage.cpp">
+      <Filter>Fichiers sources\Modele</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>Fichiers sources\Modele</Filter>
+    </ClCompile>
+    <ClCompile Include="Condiment.cpp">
+      <Filter>Fichiers sources\Modele</Filter>
+    </ClCompile>
+    <ClCompile Include="CtrlrJeux.cpp">
+      <Filter>Fichiers sources\Controleur</Filter>
+    </ClCompile>
+    <ClCompile Include="CtrlrMenu.cpp">
+      <Filter>Fichiers sources\Controleur</Filter>
+    </ClCompile>
+    <ClCompile Include="VueJeux.cpp">
+      <Filter>Fichiers sources\Vue</Filter>
+    </ClCompile>
+    <ClCompile Include="VueMenu.cpp">
+      <Filter>Fichiers sources\Vue</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Personnage.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Condiment.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="CtrlrJeux.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="CtrlrMenu.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="VueJeux.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="VueMenu.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SkyBurger.rc">
+      <Filter>Fichiers de ressources</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

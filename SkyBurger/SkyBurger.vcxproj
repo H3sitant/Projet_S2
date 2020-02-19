@@ -147,7 +147,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Condiment.cpp" />
+    <ClCompile Include="CtrlrJeux.cpp" />
+    <ClCompile Include="CtrlrMenu.cpp" />
     <ClCompile Include="SkyBurger.cpp" />
+    <ClCompile Include="Personnage.cpp" />
+    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="VueJeux.cpp" />
+    <ClCompile Include="VueMenu.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Condiment.h" />
+    <ClInclude Include="CtrlrJeux.h" />
+    <ClInclude Include="CtrlrMenu.h" />
+    <ClInclude Include="Personnage.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="VueJeux.h" />
+    <ClInclude Include="VueMenu.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SkyBurger.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
