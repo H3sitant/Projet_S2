@@ -2,6 +2,26 @@
 
 ostream& Condiment::afficher(ostream& out)
 {
+	switch (sorte){
+	case LAITUE:
+		out << 'L';
+		break;
+	case TOMATE:
+		out << 'T';
+		break;
+	case OIGNON:
+		out << 'O';
+		break;
+	case PAIN:
+		out << 'P';
+		break;
+	case BOULETTE:
+		out << 'B';
+		break;
+	default:
+		out << 'e';
+		break;
+	}
 	return out;
 }
 
@@ -9,20 +29,22 @@ ostream& Condiment::afficher(ostream& out)
 
 enum Condiment::SorteCondiment Condiment::getSorte()
 {
-	return SorteCondiment();
+	return sorte;
 }
 
 void Condiment::setSorte(SorteCondiment sorte)
 {
+	this->sorte = sorte;
 }
 
 Point Condiment::getPosition()
 {
-	return Point();
+	return position;
 }
 
 void Condiment::setPosition(Point Position)
 {
+	this->position = position;
 }
 
 ostream& operator<<(ostream& out, Condiment c)
