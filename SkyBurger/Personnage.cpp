@@ -62,5 +62,13 @@ std::ostream& operator<<(ostream& out, Personnage p) {
 }
 
 char Personnage::toString() {
-	return '¯';
+	return '-';
+}
+Personnage Personnage::copy()
+{
+	Personnage copy;
+	copy.setPosition(this->position);
+	vector<Condiment> c(condiments);
+	copy.setCondiments(c);
+	return copy;
 }

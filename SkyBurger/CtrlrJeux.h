@@ -2,6 +2,8 @@
 #include "VueJeux.h"
 #include "Personnage.h"
 #include "Condiment.h"
+#define droite 1
+#define gauche 0
 using namespace std;
 
 class CtrlrJeux
@@ -11,7 +13,7 @@ public:
 	~CtrlrJeux();
 	void ActionDeplacer(int direction);
 	void Pause();
-	void Afficher();
+	const void Afficher();
 private:
 	VueJeux vue;
 	Personnage personnage;

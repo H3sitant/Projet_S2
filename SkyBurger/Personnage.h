@@ -17,6 +17,8 @@ public:
 	void deplacer(int direction, int largeur);
 	int getHauteur();
 	char toString();
+	Personnage copy();
 	friend ostream& operator<<(ostream& out, Personnage p);
+	
 };
 

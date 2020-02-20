@@ -1,4 +1,20 @@
 #include "Condiment.h"
+#include <math.h>
+
+
+ 
+
+Condiment::Condiment(int largeur, int hauteur) {
+	this->position.y = hauteur;
+	this->position.x = rand() % largeur;
+	sorte = static_cast<SorteCondiment>(rand() % last);
+}
+
+Condiment::Condiment(SorteCondiment sorte, Point position) {
+	this->sorte = sorte;
+	this->position = position;
+}
+
 
 ostream& Condiment::afficher(ostream& out)
 {
