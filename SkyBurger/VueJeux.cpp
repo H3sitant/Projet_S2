@@ -1,8 +1,8 @@
 #include "VueJeux.h"
 VueJeux::VueJeux()
 {
-	Largeur = 15;
-	Hauteur = 15;
+	Largeur = 20;
+	Hauteur = 20;
 }
 VueJeux::~VueJeux()
 {

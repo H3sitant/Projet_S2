@@ -1,7 +1,7 @@
 #include "CtrlrJeux.h"
 #include <iostream>
 
-
+using namespace std;
 
 CtrlrJeux::CtrlrJeux()
 {
@@ -27,32 +27,54 @@ void CtrlrJeux::Pause()
 const void CtrlrJeux ::Afficher()
 {
 	char item;
-		//system("cls");
+		system("cls");
 		Personnage cpyPersonnage = personnage.copy();
 		vector<Condiment> cpyFalling(fallingCondiments);
-		for (int i = hauteur - 1; i >= 0; i--) {
-			for (int j = 0; j < largeur; j++) {
-				item = ' ';
-				for (Condiment c : cpyFalling) {
-					if (c.getPosition().y == i && c.getPosition().x == j) {
-						item = c.toString();
-						break;
+		for (int i = hauteur - 1; i >= 0; i--) 
+		{
+			bool objetL =false;
+			for (Condiment c1 : cpyFalling) 
+			{
+				if (c1.getPosition().y == i && cpyPersonnage.getPosition() == i) 
+				{
+					objetL = true;
+					break;
+				}
+				else
+				{
+					objetL=false;
+				}
+			}
+			if (objetL == true)
+			{
+				for (int j = 0; j < largeur; j++) 
+				{
+					item = 'a';
+					for (Condiment c2 : cpyFalling) 
+					{
+						if (c2.getPosition().y == i && c2.getPosition().x == j) 
+						{
+							item = c2.toString();
+							break;
+						}
 					}
-				}
-				char item = ' ';
 
-				if (i == 0 && j == cpyPersonnage.getPosition()) {
+					if (i == 0 && j == cpyPersonnage.getPosition()) 
+					{
 
-					item = cpyPersonnage.toString();
-				}
-
-				for (Condiment c : cpyPersonnage.getCondiments()) {
-					if (c.getPosition().y == i && c.getPosition().x == j) {
-						item = c.toString();
-						break;
+						item = cpyPersonnage.toString();
 					}
+
+					for (Condiment c : cpyPersonnage.getCondiments()) 
+					{
+						if (c.getPosition().y == i && c.getPosition().x == j) 
+						{
+							item = c.toString();
+							break;
+						}
+					}
+					cout << item;
 				}
-				cout << item;
 			}
 			cout << endl;
 		}
