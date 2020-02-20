@@ -17,19 +17,19 @@ int main()
         {
         case 97:
         case 75:
+        case 97:
             cout << "gauche" << endl;
-            ctrlrJeux.ActionDeplacer(gauche);
+            ctrlrJeux.ActionDeplacer(0);
             break;
-        case 77:
+        case 77:      
         case 100:
             cout << "droite" << endl;
-            ctrlrJeux.ActionDeplacer(droite);
+            ctrlrJeux.ActionDeplacer(1);
             break;
         default:
             break;
         }
-    }
-        ctrlrJeux.Afficher();
-    }
+    } while (touche != 27);
+    ctrlrJeux.setActif(false);
    
 }

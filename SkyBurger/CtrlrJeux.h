@@ -13,12 +13,15 @@ public:
 	~CtrlrJeux();
 	void ActionDeplacer(int direction);
 	void Pause();
-	const void Afficher();
+	void Afficher();
+	bool getActif();
+	void setActif(bool value);
 private:
 	VueJeux vue;
 	Personnage personnage;
 	vector<Condiment> fallingCondiments;
 	int hauteur;
 	int largeur;
+	bool Jeu_Actif;
 };
 

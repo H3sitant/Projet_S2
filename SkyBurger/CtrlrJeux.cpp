@@ -8,8 +8,7 @@ CtrlrJeux::CtrlrJeux()
 	 hauteur = vue.getHauteur();
 	 largeur = vue.getLargeur();
 	 personnage = Personnage(int(largeur/2));
-	 
-
+	 Jeu_Actif = true;
 }
 CtrlrJeux::~CtrlrJeux()
 {
@@ -24,12 +23,11 @@ void CtrlrJeux::Pause()
 {
 	
 }
-//Affichage à la console chaque élément en jeux
+//Affichage ï¿½ la console chaque ï¿½lï¿½ment en jeux
 const void CtrlrJeux ::Afficher()
 {
 	Personnage cpyPersonnage = personnage.copy();
 	vector<Condiment> cpyFalling(fallingCondiments);
-		char item = ' ';
 		for (int i = hauteur - 1; i >= 0; i--) {
 			for (int j = 0; j < largeur; j++) {
 				item = ' ';
@@ -39,6 +37,7 @@ const void CtrlrJeux ::Afficher()
 						break;
 					}
 				}
+		char item = ' ';
 
 				if (i == 0 && j == cpyPersonnage.getPosition()) {
 
@@ -56,4 +55,12 @@ const void CtrlrJeux ::Afficher()
 			cout << endl;
 		}
 		cout << endl << endl;
+}
+bool CtrlrJeux::getActif()
+{
+	return Jeu_Actif;
+}
+void CtrlrJeux::setActif(bool value)
+{
+	Jeu_Actif = false;
 }
