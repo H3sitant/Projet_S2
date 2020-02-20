@@ -1,6 +1,8 @@
 #pragma once
 #include "Condiment.h"
 #include <vector>
+#define droite 1
+#define gauche 0
 using namespace std;
 class Personnage
 {

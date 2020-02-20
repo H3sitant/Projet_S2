@@ -1,7 +1,6 @@
 
 #include "Personnage.h"
-#define droite 1
-#define gauche 0
+
 Personnage::Personnage(int position)
 {
 	this->position = position;
@@ -32,7 +31,7 @@ void Personnage::deplacer(int direction,int largeur)
 	{
 		if (position <= 0)
 		{
-			position = largeur;
+			position = largeur-1;
 		}
 		else
 		{
@@ -41,7 +40,7 @@ void Personnage::deplacer(int direction,int largeur)
 	}
 	else
 	{
-		if (position >= largeur)
+		if (position >= largeur-1)
 		{
 			position = 0;
 		}

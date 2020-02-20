@@ -5,31 +5,64 @@
 #include "CtrlrJeux.h"
 #include <thread>
 #include <conio.h>
+#include <Windows.h>
+#include <ctime>
 CtrlrJeux ctrlrJeux;
-
+void Afficher()
+{
+    cout << "Afficher" << endl;
+    ctrlrJeux.Afficher();
+}
+void clear_screen(char fill = ' ') {
+    COORD tl = { 0,0 };
+    CONSOLE_SCREEN_BUFFER_INFO s;
+    HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+    GetConsoleScreenBufferInfo(console, &s);
+    DWORD written, cells = s.dwSize.X * s.dwSize.Y;
+    FillConsoleOutputCharacter(console, fill, cells, tl, &written);
+    FillConsoleOutputAttribute(console, s.wAttributes, cells, tl, &written);
+    SetConsoleCursorPosition(console, tl);
+}
 int main()
 {
-    while(true){
+    //thread t1(Afficher);
     int touche;
-    if (_kbhit) {
-        touche = _getch();
-        switch (touche)
-        {
-        case 97:
-        case 75:
-        case 97:
-            cout << "gauche" << endl;
-            ctrlrJeux.ActionDeplacer(0);
-            break;
-        case 77:      
-        case 100:
-            cout << "droite" << endl;
-            ctrlrJeux.ActionDeplacer(1);
-            break;
-        default:
-            break;
+    bool exit = false;
+    while (!exit)
+    {
+        if (_kbhit()) {
+            touche = _getch();
+            switch (touche)
+            {
+            case 75:
+            case 97:
+                //cout << "gauche" << endl;
+                ctrlrJeux.ActionDeplacer(gauche);
+                break;
+            case 77:
+            case 100:
+                //cout << "droite" << endl;
+                ctrlrJeux.ActionDeplacer(droite);
+                break;
+            case 27:
+                exit = true;
+                break;
+                //pause = p
+            case 112:
+                ctrlrJeux.setActif(!ctrlrJeux.getActif());
+            default:
+                break;
+            }
+            //system("cls");
+            //clear_screen();
+            ctrlrJeux.Afficher();
+        }else if ((clock()) % 500 == 0) {
+            //system("cls");
+            //clear_screen();
+            ctrlrJeux.Afficher();
         }
-    } while (touche != 27);
-    ctrlrJeux.setActif(false);
-   
+        //ctrlrJeux.setActif(false);
+        //t1.join();
+    }
 }
+
