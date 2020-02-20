@@ -2,6 +2,8 @@
 #include "VueJeux.h"
 #include "Personnage.h"
 #include "Condiment.h"
+using namespace std;
+
 class CtrlrJeux
 {
 public:
@@ -13,6 +15,8 @@ public:
 private:
 	VueJeux vue;
 	Personnage personnage;
-	Condiment condiment;
+	vector<Condiment> fallingCondiments;
+	int hauteur;
+	int largeur;
 };
 

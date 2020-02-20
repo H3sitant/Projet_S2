@@ -2,9 +2,9 @@
 #include "Personnage.h"
 #define droite 1
 #define gauche 0
-Personnage::Personnage()
+Personnage::Personnage(int position)
 {
-	position = 0;
+	this->position = position;
 }
 Personnage::~Personnage()
 {
@@ -18,11 +18,11 @@ void Personnage::setPosition(int newPosition)
 {
 	position = newPosition;
 }
-stack<Condiment> Personnage::getCondiments()
+vector<Condiment> Personnage::getCondiments()
 {
 	return condiments;
 }
-void Personnage::setCondiments(stack<Condiment> newCondiments)
+void Personnage::setCondiments(vector<Condiment> newCondiments)
 {
 	condiments = newCondiments;
 }
@@ -30,7 +30,7 @@ void Personnage::deplacer(int direction,int largeur)
 {
 	if (direction == gauche)
 	{
-		if (position == 0)
+		if (position <= 0)
 		{
 			position = largeur;
 		}
@@ -41,7 +41,7 @@ void Personnage::deplacer(int direction,int largeur)
 	}
 	else
 	{
-		if (position == largeur)
+		if (position >= largeur)
 		{
 			position = 0;
 		}
@@ -53,5 +53,14 @@ void Personnage::deplacer(int direction,int largeur)
 }
 int Personnage::getHauteur()
 {
-	return condiments.top().getPosition().y;
+	return condiments.back().getPosition().y;
+}
+
+std::ostream& operator<<(ostream& out, Personnage p) {
+	out << p.toString();
+	return out;
+}
+
+char Personnage::toString() {
+	return '¯';
 }

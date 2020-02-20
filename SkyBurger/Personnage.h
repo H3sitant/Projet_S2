@@ -1,21 +1,23 @@
 #pragma once
 #include "Condiment.h"
 
-#include <stack>
+#include <vector>
 using namespace std;
 class Personnage
 {
 private:
 	int position;
-	stack<Condiment> condiments;
+	vector<Condiment> condiments;
 public:
-	Personnage();
+	Personnage(int position=0);
 	~Personnage();
 	int getPosition();
 	void setPosition(int newPosition);
-	stack<Condiment> getCondiments();
-	void setCondiments(stack<Condiment> condiments);
+	vector<Condiment> getCondiments();
+	void setCondiments(vector<Condiment> condiments);
 	void deplacer(int direction, int largeur);
 	int getHauteur();
+	char toString();
+	friend ostream& operator<<(ostream& out, Personnage p);
 };
 

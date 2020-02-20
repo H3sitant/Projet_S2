@@ -2,28 +2,33 @@
 
 ostream& Condiment::afficher(ostream& out)
 {
-	switch (sorte){
+	out << this->toString();
+	return out;
+}
+char Condiment::toString() {
+	char out;
+	switch (sorte) {
 	case LAITUE:
-		out << 'L';
+		out = 'L';
 		break;
 	case TOMATE:
-		out << 'T';
+		out = 'T';
 		break;
 	case OIGNON:
-		out << 'O';
+		out = 'O';
 		break;
 	case PAIN:
-		out << 'P';
+		out = 'P';
 		break;
 	case BOULETTE:
-		out << 'B';
+		out = 'B';
 		break;
 	default:
-		out << 'e';
+		out = 'e';
 		break;
 	}
 	return out;
-}
+ }
 
 
 
