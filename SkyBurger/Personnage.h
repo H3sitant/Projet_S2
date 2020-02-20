@@ -1,6 +1,5 @@
 #pragma once
 #include "Condiment.h"
-
 #include <vector>
 using namespace std;
 class Personnage

@@ -30,7 +30,7 @@ void CtrlrJeux ::Afficher()
 		for (int j = 0; j < largeur; j++) {
 
 			for (Condiment c : fallingCondiments) {
-				if (c.getPosition().y == i && c.getPosition.x == j) {
+				if (c.getPosition().y == i && c.getPosition().x == j) {
 					item = c.toString();
 					break;
 				}
@@ -39,7 +39,7 @@ void CtrlrJeux ::Afficher()
 			if (i == 0 && j == personnage.getPosition()) item = personnage.toString();
 			
 			for (Condiment c : personnage.getCondiments()) {
-				if (c.getPosition().y == i&&c.getPosition.x == j) {
+				if (c.getPosition().y == i&&c.getPosition().x == j) {
 					item = c.toString();
 					break;
 				}
