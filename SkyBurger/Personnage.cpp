@@ -1,4 +1,4 @@
-
+﻿
 #include "Personnage.h"
 
 Personnage::Personnage(int position)
@@ -61,7 +61,7 @@ std::ostream& operator<<(ostream& out, Personnage p) {
 }
 
 char Personnage::toString() {
-	return '-';
+	return '#';
 }
 Personnage Personnage::copy()
 {

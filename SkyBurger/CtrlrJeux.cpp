@@ -3,6 +3,7 @@
 
 using namespace std;
 
+
 CtrlrJeux::CtrlrJeux()
 {
 	 hauteur = vue.getHauteur();
@@ -33,23 +34,24 @@ const void CtrlrJeux ::Afficher()
 		for (int i = hauteur - 1; i >= 0; i--) 
 		{
 			bool objetL =false;
-			for (Condiment c1 : cpyFalling) 
+			for (Condiment c2 : cpyFalling)
 			{
-				if (c1.getPosition().y == i && cpyPersonnage.getPosition() == i) 
+				cout << c2.getPosition().y << endl;
+				if (c2.getPosition().y == i)
 				{
 					objetL = true;
 					break;
 				}
-				else
-				{
-					objetL=false;
-				}
+			}
+			if (i == 0)
+			{
+				objetL = true;
 			}
 			if (objetL == true)
 			{
 				for (int j = 0; j < largeur; j++) 
 				{
-					item = 'a';
+					item = ' ';
 					for (Condiment c2 : cpyFalling) 
 					{
 						if (c2.getPosition().y == i && c2.getPosition().x == j) 
