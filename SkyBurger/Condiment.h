@@ -1,6 +1,10 @@
 #pragma once
 #include <ostream>
+#define bas 3
+#define droite 1
+#define gauche 0
 using namespace std;
+
 struct Point {
 	int x;
 	int y;
@@ -18,6 +22,8 @@ public:
 	void setSorte(SorteCondiment sorte);
 	Point getPosition();
 	void setPosition(Point Position);
+	void deplacer(int direction);
+	bool operator==(const Condiment& c) const;
 
 private:
 	SorteCondiment sorte;

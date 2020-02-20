@@ -72,3 +72,12 @@ ostream& operator<<(ostream& out, Condiment c)
 {
 	return c.afficher(out);
 }
+
+void Condiment::deplacer(int direction) {
+
+}
+
+bool Condiment::operator==(const Condiment& c) const
+{
+	return (this->sorte == c.sorte && this->position.x == c.position.x && this->position.y == c.position.y);
+}

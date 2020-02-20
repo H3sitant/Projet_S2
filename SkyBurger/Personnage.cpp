@@ -17,21 +17,22 @@ void Personnage::setPosition(int newPosition)
 {
 	position = newPosition;
 }
-vector<Condiment> Personnage::getCondiments()
+list<Condiment> Personnage::getCondiments()
 {
 	return condiments;
 }
-void Personnage::setCondiments(vector<Condiment> newCondiments)
+void Personnage::setCondiments(list<Condiment> newCondiments)
 {
 	condiments = newCondiments;
 }
-void Personnage::deplacer(int direction,int largeur)
+void Personnage::deplacer(int direction, int largeur)
 {
+
 	if (direction == gauche)
 	{
 		if (position <= 0)
 		{
-			position = largeur-1;
+			position = largeur - 1;
 		}
 		else
 		{
@@ -40,7 +41,7 @@ void Personnage::deplacer(int direction,int largeur)
 	}
 	else
 	{
-		if (position >= largeur-1)
+		if (position >= largeur - 1)
 		{
 			position = 0;
 		}
@@ -48,6 +49,15 @@ void Personnage::deplacer(int direction,int largeur)
 		{
 			position++;
 		}
+	}
+	list <Condiment> cpy(condiments);
+	for(Condiment c : cpy) {
+		Point p = c.getPosition();
+		p.x = position;
+		Condiment replace(c.getSorte(), p);
+		condiments.remove(c);
+		c.setPosition(p);
+		condiments.push_back(c);
 	}
 }
 int Personnage::getHauteur()
@@ -67,7 +77,7 @@ Personnage Personnage::copy()
 {
 	Personnage copy;
 	copy.setPosition(this->position);
-	vector<Condiment> c(condiments);
+	list<Condiment> c(condiments);
 	copy.setCondiments(c);
 	return copy;
 }

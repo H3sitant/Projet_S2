@@ -29,7 +29,7 @@ const void CtrlrJeux ::Afficher()
 	char item;
 		//system("cls");
 		Personnage cpyPersonnage = personnage.copy();
-		vector<Condiment> cpyFalling(fallingCondiments);
+		list<Condiment> cpyFalling(fallingCondiments);
 		for (int i = hauteur - 1; i >= 0; i--) {
 			for (int j = 0; j < largeur; j++) {
 				item = ' ';
@@ -65,4 +65,24 @@ bool CtrlrJeux::getActif()
 void CtrlrJeux::setActif(bool value)
 {
 	Jeu_Actif = false;
+}
+
+void CtrlrJeux::faireTomberCondiments() {
+	if (!fallingCondiments.empty()) {
+		for (Condiment c : fallingCondiments) {
+			c.deplacer(bas);
+		}
+		list<Condiment> cpyFalling(fallingCondiments);
+		for (Condiment c : cpyFalling) {
+			//if (c.getPosition().y == personnage.getHauteur()) {
+				//	personnage.getCondiments().push_back(c);
+					//fallingCondiments.remove(c);
+			}
+		}
+	}
+}
+
+void CtrlrJeux::genererCondiment() {
+	Condiment c(largeur, hauteur);
+	fallingCondiments.push_back(c);
 }
