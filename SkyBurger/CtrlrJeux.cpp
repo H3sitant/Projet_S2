@@ -28,7 +28,7 @@ void CtrlrJeux::Pause()
 const void CtrlrJeux::Afficher()
 {
 	string item =" ";
-		system("cls");
+		//system("cls");
 		Personnage cpyPersonnage = personnage.copy();
 		list<Condiment*> cpyFalling(fallingCondiments);
 		string affichage = "";
@@ -60,8 +60,6 @@ const void CtrlrJeux::Afficher()
 			affichage+= (ligne + "\n");
 		}
 		cout << affichage;
-	}
-	cout << endl << endl;
 }
 bool CtrlrJeux::getActif()
 {
