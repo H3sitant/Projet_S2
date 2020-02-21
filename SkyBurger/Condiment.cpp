@@ -1,10 +1,12 @@
 #include "Condiment.h"
 #include <math.h>
+#include <ctime>
 
 
  
 
 Condiment::Condiment(int largeur, int hauteur) {
+	srand(time(NULL));
 	this->position.y = hauteur-1;
 	this->position.x = rand() % largeur;
 	sorte = static_cast<SorteCondiment>(rand() % last);
