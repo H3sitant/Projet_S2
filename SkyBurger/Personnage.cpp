@@ -17,11 +17,11 @@ void Personnage::setPosition(int newPosition)
 {
 	position = newPosition;
 }
-list<Condiment> Personnage::getCondiments()
+list<Condiment*> Personnage::getCondiments()
 {
 	return condiments;
 }
-void Personnage::setCondiments(list<Condiment> newCondiments)
+void Personnage::setCondiments(list<Condiment*> newCondiments)
 {
 	condiments = newCondiments;
 }
@@ -50,19 +50,14 @@ void Personnage::deplacer(int direction, int largeur)
 			position++;
 		}
 	}
-	list <Condiment> cpy(condiments);
-	for(Condiment c : cpy) {
-		Point p = c.getPosition();
-		p.x = position;
-		Condiment replace(c.getSorte(), p);
-		condiments.remove(c);
-		c.setPosition(p);
-		condiments.push_back(c);
+	
+	for(Condiment* c : condiments) {
+		c->setPositionX(position);
 	}
 }
 int Personnage::getHauteur()
 {
-	return condiments.back().getPosition().y;
+	return condiments.size()+1;
 }
 
 std::ostream& operator<<(ostream& out, Personnage p) {
@@ -73,11 +68,14 @@ std::ostream& operator<<(ostream& out, Personnage p) {
 char Personnage::toString() {
 	return '-';
 }
+void Personnage::ajouterCondiment(Condiment* c) {
+	condiments.push_back(c);
+}
 Personnage Personnage::copy()
 {
 	Personnage copy;
 	copy.setPosition(this->position);
-	list<Condiment> c(condiments);
+	list<Condiment*> c(condiments);
 	copy.setCondiments(c);
 	return copy;
 }

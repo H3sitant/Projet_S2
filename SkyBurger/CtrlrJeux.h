@@ -20,7 +20,7 @@ public:
 private:
 	VueJeux vue;
 	Personnage personnage;
-	list<Condiment> fallingCondiments;
+	list<Condiment*> fallingCondiments;
 	int hauteur;
 	int largeur;
 	bool Jeu_Actif;

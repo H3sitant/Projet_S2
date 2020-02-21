@@ -15,6 +15,7 @@ public:
 	enum SorteCondiment{LAITUE, PAIN, TOMATE, OIGNON, BOULETTE, last};
 	Condiment(int largeur, int hauteur);
 	Condiment(SorteCondiment sorte, Point position);
+	Condiment(const Condiment &c);
 	ostream& afficher(ostream& out);
 	char toString();
 	friend ostream& operator<<(ostream& out, Condiment c);
@@ -22,8 +23,12 @@ public:
 	void setSorte(SorteCondiment sorte);
 	Point getPosition();
 	void setPosition(Point Position);
+	void setPositionX(int x);
+	void setPositionY(int y);
 	void deplacer(int direction);
 	bool operator==(const Condiment& c) const;
+
+	Condiment& operator=(const Condiment& c);
 
 private:
 	SorteCondiment sorte;
