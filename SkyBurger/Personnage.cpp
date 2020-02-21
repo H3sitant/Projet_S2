@@ -1,5 +1,7 @@
 ﻿
 #include "Personnage.h"
+using namespace std;
+#include <iostream>
 
 Personnage::Personnage(int position)
 {
@@ -78,4 +80,11 @@ Personnage Personnage::copy()
 	list<Condiment*> c(condiments);
 	copy.setCondiments(c);
 	return copy;
+}
+void Personnage::setHauteur(int newH)
+{
+	list<Condiment*> newcondiments;
+	condiments.clear();
+	cout << condiments.size() << endl;
+	condiments = newcondiments;
 }

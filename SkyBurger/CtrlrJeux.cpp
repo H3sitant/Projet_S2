@@ -9,7 +9,7 @@ CtrlrJeux::CtrlrJeux()
 	 hauteur = vue.getHauteur();
 	 largeur = vue.getLargeur();
 	 personnage = Personnage(int(largeur/2));
-	 Jeu_Actif = true;
+	 //Jeu_Actif = true;
 }
 CtrlrJeux::~CtrlrJeux()
 {
@@ -18,11 +18,6 @@ CtrlrJeux::~CtrlrJeux()
 void CtrlrJeux:: ActionDeplacer(int direction)
 {
 	personnage.deplacer(direction, largeur);
-}
-
-void CtrlrJeux::Pause()
-{
-	
 }
 //Affichage � la console chaque �l�ment en jeux
 const void CtrlrJeux::Afficher()
@@ -61,14 +56,6 @@ const void CtrlrJeux::Afficher()
 		}
 		cout << affichage;
 }
-bool CtrlrJeux::getActif()
-{
-	return Jeu_Actif;
-}
-void CtrlrJeux::setActif(bool value)
-{
-	Jeu_Actif = false;
-}
 
 void CtrlrJeux::faireTomberCondiments() {
 	if (!fallingCondiments.empty()) {
@@ -91,3 +78,11 @@ void CtrlrJeux::genererCondiment() {
 	Condiment c(largeur, hauteur);
 	fallingCondiments.push_back(new Condiment(largeur, hauteur));
 }
+
+/*void CtrlrJeux::reset()
+{
+	//personnage.setPosition(0);
+	//personnage.setHauteur(0);
+	Personnage newpersonnage;
+	personnage = newpersonnage;
+}*/

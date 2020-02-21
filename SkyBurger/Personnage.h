@@ -22,6 +22,6 @@ public:
 	void ajouterCondiment(Condiment* c);
 	Personnage copy();
 	friend ostream& operator<<(ostream& out, Personnage p);
-	
+	void setHauteur(int newH);	
 };
 

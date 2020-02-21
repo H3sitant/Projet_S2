@@ -11,10 +11,7 @@ public:
 	CtrlrJeux();
 	~CtrlrJeux();
 	void ActionDeplacer(int direction);
-	void Pause();
 	const void Afficher();
-	bool getActif();
-	void setActif(bool value);
 	void faireTomberCondiments();
 	void genererCondiment();
 private:
@@ -23,6 +20,5 @@ private:
 	list<Condiment*> fallingCondiments;
 	int hauteur;
 	int largeur;
-	bool Jeu_Actif;
 };
 
