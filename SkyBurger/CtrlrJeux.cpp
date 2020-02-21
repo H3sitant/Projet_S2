@@ -80,7 +80,7 @@ void CtrlrJeux::faireTomberCondiments() {
 				Condiment* copy(c);
 					personnage.ajouterCondiment(copy);
 					fallingCondiments.remove(c);
-			}
+			}else if (c->getPosition().y<0) fallingCondiments.remove(c);
 		}
 	}
 }
