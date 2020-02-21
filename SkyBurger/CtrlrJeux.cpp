@@ -27,36 +27,18 @@ void CtrlrJeux::Pause()
 //Affichage � la console chaque �l�ment en jeux
 const void CtrlrJeux::Afficher()
 {
-	char item;
-	system("cls");
-	Personnage cpyPersonnage = personnage.copy();
-	list<Condiment*> cpyFalling(fallingCondiments);
-	for (int i = hauteur - 1; i >= 0; i--)
-	{
-		bool objetL = false;
-		for (Condiment* c2 : cpyFalling)
-		{
-			cout << c2->getPosition().y << endl;
-			if (c2->getPosition().y == i)
-			{
-				objetL = true;
-				break;
-			}
-		}
-		if (i == 0)
-		{
-			objetL = true;
-		}
-		if (objetL == true)
-		{
-			for (int j = 0; j < largeur; j++)
-			{
-				item = ' ';
-				for (Condiment* c2 : cpyFalling)
-				{
-					if (c2->getPosition().y == i && c2->getPosition().x == j)
-					{
-						item = c2->toString();
+	string item =" ";
+		system("cls");
+		Personnage cpyPersonnage = personnage.copy();
+		list<Condiment*> cpyFalling(fallingCondiments);
+		string affichage = "";
+		for (int i = hauteur - 1; i >= 0; i--) {
+			string ligne = "";
+			for (int j = 0; j < largeur; j++) {
+				item = " ";
+				for (Condiment* c : cpyFalling) {
+					if (c->getPosition().y == i && c->getPosition().x == j) {
+						item = c->toString();
 						break;
 					}
 				}
@@ -73,10 +55,11 @@ const void CtrlrJeux::Afficher()
 						break;
 					}
 				}
-				cout << item;
+				ligne+= item;
 			}
+			affichage+= (ligne + "\n");
 		}
-		cout << endl;
+		cout << affichage;
 	}
 	cout << endl << endl;
 }
