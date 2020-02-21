@@ -67,13 +67,10 @@ const void CtrlrJeux ::Afficher()
 						item = cpyPersonnage.toString();
 					}
 
-					for (Condiment c : cpyPersonnage.getCondiments()) 
-					{
-						if (c.getPosition().y == i && c.getPosition().x == j) 
-						{
-							item = c.toString();
-							break;
-						}
+				for (Condiment* c : cpyPersonnage.getCondiments()) {
+					if (c->getPosition().y == i && c->getPosition().x == j) {
+						item = c->toString();
+						break;
 					}
 					cout << item;
 				}
@@ -89,4 +86,26 @@ bool CtrlrJeux::getActif()
 void CtrlrJeux::setActif(bool value)
 {
 	Jeu_Actif = false;
+}
+
+void CtrlrJeux::faireTomberCondiments() {
+	if (!fallingCondiments.empty()) {
+		for (Condiment* c : fallingCondiments) {
+			c->deplacer(bas);
+		}
+		
+		list<Condiment*> cpyFalling(fallingCondiments);
+		for (Condiment* c : cpyFalling) {
+			if (c->getPosition().y == personnage.getHauteur() && c->getPosition().x == personnage.getPosition()) {
+				Condiment* copy(c);
+					personnage.ajouterCondiment(copy);
+					fallingCondiments.remove(c);
+			}
+		}
+	}
+}
+
+void CtrlrJeux::genererCondiment() {
+	Condiment c(largeur, hauteur);
+	fallingCondiments.push_back(new Condiment(largeur, hauteur));
 }

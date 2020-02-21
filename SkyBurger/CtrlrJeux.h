@@ -2,6 +2,7 @@
 #include "VueJeux.h"
 #include "Personnage.h"
 #include "Condiment.h"
+#include <list>
 using namespace std;
 
 class CtrlrJeux
@@ -14,10 +15,12 @@ public:
 	const void Afficher();
 	bool getActif();
 	void setActif(bool value);
+	void faireTomberCondiments();
+	void genererCondiment();
 private:
 	VueJeux vue;
 	Personnage personnage;
-	vector<Condiment> fallingCondiments;
+	list<Condiment*> fallingCondiments;
 	int hauteur;
 	int largeur;
 	bool Jeu_Actif;

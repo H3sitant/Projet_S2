@@ -56,9 +56,14 @@ int main()
             //system("cls");
             //clear_screen();
             ctrlrJeux.Afficher();
-        }else if ((clock()) % 500 == 0) {
+        }
+        if ((clock()) % 3000 == 0) {
+            ctrlrJeux.genererCondiment();
+        }
+        if ((clock()) % 500 == 0) {
             //system("cls");
             //clear_screen();
+            ctrlrJeux.faireTomberCondiments();
             ctrlrJeux.Afficher();
         }
         //ctrlrJeux.setActif(false);

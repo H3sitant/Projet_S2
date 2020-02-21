@@ -17,21 +17,22 @@ void Personnage::setPosition(int newPosition)
 {
 	position = newPosition;
 }
-vector<Condiment> Personnage::getCondiments()
+list<Condiment*> Personnage::getCondiments()
 {
 	return condiments;
 }
-void Personnage::setCondiments(vector<Condiment> newCondiments)
+void Personnage::setCondiments(list<Condiment*> newCondiments)
 {
 	condiments = newCondiments;
 }
-void Personnage::deplacer(int direction,int largeur)
+void Personnage::deplacer(int direction, int largeur)
 {
+
 	if (direction == gauche)
 	{
 		if (position <= 0)
 		{
-			position = largeur-1;
+			position = largeur - 1;
 		}
 		else
 		{
@@ -40,7 +41,7 @@ void Personnage::deplacer(int direction,int largeur)
 	}
 	else
 	{
-		if (position >= largeur-1)
+		if (position >= largeur - 1)
 		{
 			position = 0;
 		}
@@ -49,10 +50,14 @@ void Personnage::deplacer(int direction,int largeur)
 			position++;
 		}
 	}
+	
+	for(Condiment* c : condiments) {
+		c->setPositionX(position);
+	}
 }
 int Personnage::getHauteur()
 {
-	return condiments.back().getPosition().y;
+	return condiments.size()+1;
 }
 
 std::ostream& operator<<(ostream& out, Personnage p) {
@@ -63,11 +68,14 @@ std::ostream& operator<<(ostream& out, Personnage p) {
 char Personnage::toString() {
 	return '#';
 }
+void Personnage::ajouterCondiment(Condiment* c) {
+	condiments.push_back(c);
+}
 Personnage Personnage::copy()
 {
 	Personnage copy;
 	copy.setPosition(this->position);
-	vector<Condiment> c(condiments);
+	list<Condiment*> c(condiments);
 	copy.setCondiments(c);
 	return copy;
 }

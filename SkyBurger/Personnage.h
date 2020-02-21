@@ -1,6 +1,6 @@
 #pragma once
 #include "Condiment.h"
-#include <vector>
+#include <list>
 #define droite 1
 #define gauche 0
 using namespace std;
@@ -8,17 +8,18 @@ class Personnage
 {
 private:
 	int position;
-	vector<Condiment> condiments;
+	list<Condiment*> condiments;
 public:
 	Personnage(int position=0);
 	~Personnage();
 	int getPosition();
 	void setPosition(int newPosition);
-	vector<Condiment> getCondiments();
-	void setCondiments(vector<Condiment> condiments);
+	list<Condiment*> getCondiments();
+	void setCondiments(list<Condiment*> condiments);
 	void deplacer(int direction, int largeur);
 	int getHauteur();
 	char toString();
+	void ajouterCondiment(Condiment* c);
 	Personnage copy();
 	friend ostream& operator<<(ostream& out, Personnage p);
 	
