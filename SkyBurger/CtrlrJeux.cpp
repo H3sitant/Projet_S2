@@ -26,13 +26,15 @@ void CtrlrJeux::Pause()
 //Affichage � la console chaque �l�ment en jeux
 const void CtrlrJeux ::Afficher()
 {
-	char item;
-		//system("cls");
+	string item =" ";
+		system("cls");
 		Personnage cpyPersonnage = personnage.copy();
 		list<Condiment*> cpyFalling(fallingCondiments);
+		string affichage = "";
 		for (int i = hauteur - 1; i >= 0; i--) {
+			string ligne = "";
 			for (int j = 0; j < largeur; j++) {
-				item = ' ';
+				item = " ";
 				for (Condiment* c : cpyFalling) {
 					if (c->getPosition().y == i && c->getPosition().x == j) {
 						item = c->toString();
@@ -51,11 +53,11 @@ const void CtrlrJeux ::Afficher()
 						break;
 					}
 				}
-				cout << item;
+				ligne+= item;
 			}
-			cout << endl;
+			affichage+= (ligne + "\n");
 		}
-		cout << endl << endl;
+		cout << affichage;
 	}
 bool CtrlrJeux::getActif()
 {
