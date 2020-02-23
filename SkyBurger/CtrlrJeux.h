@@ -12,13 +12,20 @@ public:
 	~CtrlrJeux();
 	void ActionDeplacer(int direction);
 	const void Afficher();
-	void faireTomberCondiments();
+	bool faireTomberCondiments();
 	void genererCondiment();
+	void toString(int sorte);
+	int getlisteV(int i);
+	int getLongeurL();
+	Personnage getPersonne();
 private:
 	VueJeux vue;
 	Personnage personnage;
 	list<Condiment*> fallingCondiments;
 	int hauteur;
 	int largeur;
+	int liste_longeur;
+	int listeV[10];
+
 };
 

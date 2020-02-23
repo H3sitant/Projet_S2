@@ -12,7 +12,7 @@ struct Point {
 class Condiment
 {
 public:
-	enum SorteCondiment{LAITUE, PAIN, TOMATE, OIGNON, BOULETTE, last};
+	enum SorteCondiment{ PAIN, LAITUE, TOMATE, OIGNON, BOULETTE, last};
 	Condiment(int largeur, int hauteur);
 	Condiment(SorteCondiment sorte, Point position);
 	Condiment(const Condiment &c);

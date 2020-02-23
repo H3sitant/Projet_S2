@@ -37,6 +37,7 @@ void clear_screen(char fill = ' ') {
 int main()
 {
     int exit = 0;
+    int score = 0;
     while (exit!=2) 
     {
         CtrlrJeux ctrlrJeux;
@@ -44,7 +45,8 @@ int main()
         //thread t1(Afficher);
         int touche;
         exit = false;
-        while (exit<1)
+        bool finjeu = false;
+        while (exit<1 && !finjeu)
         {
             if (_kbhit()) {
                 touche = _getch();
@@ -75,14 +77,18 @@ int main()
                 //clear_screen();
                 ctrlrJeux.Afficher();
             }
-            if ((clock()) % 3000 == 0) {
+            if ((clock()) % 2000 == 0) {
                 ctrlrJeux.genererCondiment();
             }
-            if ((clock()) % 500 == 0) {
-                //system("cls");
-                //clear_screen();
-                ctrlrJeux.faireTomberCondiments();
+            if ((clock()) % 250 == 0) {
+                finjeu=ctrlrJeux.faireTomberCondiments();
                 ctrlrJeux.Afficher();
+            }
+            if (finjeu)
+            {
+                exit=menu.fin_partie(ctrlrJeux, score);
+                if (exit == 0) score++;
+                else score = 0;
             }
             //ctrlrJeux.setActif(false);
             //t1.join();
@@ -90,6 +96,6 @@ int main()
         //ctrlrJeux.~CtrlrJeux();
         //menu.~CtrlrMenu();
     }
-   
+    return 0;
 }
 

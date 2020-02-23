@@ -9,6 +9,13 @@ CtrlrJeux::CtrlrJeux()
 	 hauteur = vue.getHauteur();
 	 largeur = vue.getLargeur();
 	 personnage = Personnage(int(largeur/2));
+	 liste_longeur = (rand() % 10)+1;
+	 for (int i = 0; i < liste_longeur; i++)
+	 {
+		 listeV[i] = ((rand() % 4) + 1);
+		 cout << listeV[i] << endl;
+	 }
+	 listeV[liste_longeur - 1] = 0;
 	 //Jeu_Actif = true;
 }
 CtrlrJeux::~CtrlrJeux()
@@ -27,6 +34,12 @@ const void CtrlrJeux::Afficher()
 		Personnage cpyPersonnage = personnage.copy();
 		list<Condiment*> cpyFalling(fallingCondiments);
 		string affichage = "";
+		cout << "Liste en orde des condiments : ";
+		for (int i = 0; i < liste_longeur; i++)
+		{
+			toString(listeV[i]);
+		}
+		cout << endl;
 		for (int i = hauteur - 1; i >= 0; i--) {
 			string ligne = "";
 			for (int j = 0; j < largeur; j++) {
@@ -57,7 +70,8 @@ const void CtrlrJeux::Afficher()
 		cout << affichage;
 }
 
-void CtrlrJeux::faireTomberCondiments() {
+bool CtrlrJeux::faireTomberCondiments() {
+	bool finjeu = false;
 	if (!fallingCondiments.empty()) {
 		for (Condiment* c : fallingCondiments) {
 			c->deplacer(bas);
@@ -69,9 +83,15 @@ void CtrlrJeux::faireTomberCondiments() {
 				Condiment* copy(c);
 					personnage.ajouterCondiment(copy);
 					fallingCondiments.remove(c);
+					if (c->getSorte() == 0)
+					{
+						//cout << "fin de partie" << endl;
+						finjeu = true;
+					}
 			}else if (c->getPosition().y<0) fallingCondiments.remove(c);
 		}
 	}
+	return finjeu;
 }
 
 void CtrlrJeux::genererCondiment() {
@@ -79,10 +99,40 @@ void CtrlrJeux::genererCondiment() {
 	fallingCondiments.push_back(new Condiment(largeur, hauteur));
 }
 
-/*void CtrlrJeux::reset()
+void CtrlrJeux::toString(int sorte) {
+	switch (sorte) {
+	case 1:
+		cout << "L ";
+		break;
+	case 2:
+		cout << "T ";
+		break;
+	case 3:
+		cout << "O ";
+		break;
+	case 0:
+		cout << "P ";
+		break;
+	case 4:
+		cout << "B ";
+		break;
+	default:
+		cout << "e ";
+		break;
+	}
+}
+
+int CtrlrJeux::getlisteV(int i)
 {
-	//personnage.setPosition(0);
-	//personnage.setHauteur(0);
-	Personnage newpersonnage;
-	personnage = newpersonnage;
-}*/
+	return listeV[i];
+}
+
+int CtrlrJeux::getLongeurL()
+{
+	return liste_longeur;
+}
+
+Personnage CtrlrJeux::getPersonne()
+{
+	return personnage;
+}
