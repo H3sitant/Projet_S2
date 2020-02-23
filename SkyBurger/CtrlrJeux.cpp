@@ -34,12 +34,12 @@ const void CtrlrJeux::Afficher()
 		Personnage cpyPersonnage = personnage.copy();
 		list<Condiment*> cpyFalling(fallingCondiments);
 		string affichage = "";
-		cout << "Liste en orde des condiments : ";
+		affichage+= "Liste en orde des condiments : ";
 		for (int i = 0; i < liste_longeur; i++)
 		{
-			toString(listeV[i]);
+			affichage+= toString(listeV[i]);
 		}
-		cout << endl;
+		affichage += "\n";
 		for (int i = hauteur - 1; i >= 0; i--) {
 			string ligne = "";
 			for (int j = 0; j < largeur; j++) {
@@ -99,26 +99,25 @@ void CtrlrJeux::genererCondiment() {
 	fallingCondiments.push_back(new Condiment(largeur, hauteur));
 }
 
-void CtrlrJeux::toString(int sorte) {
+string CtrlrJeux::toString(int sorte) {
 	switch (sorte) {
 	case 1:
-		cout << "L ";
-		break;
+		return "L ";
 	case 2:
-		cout << "T ";
-		break;
+		return "T ";
+		
 	case 3:
-		cout << "O ";
-		break;
+		return "O ";
+		
 	case 0:
-		cout << "P ";
-		break;
+		return "P ";
+		
 	case 4:
-		cout << "B ";
-		break;
+		return "B ";
+		
 	default:
-		cout << "e ";
-		break;
+		return "e ";
+		
 	}
 }
 

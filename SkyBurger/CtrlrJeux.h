@@ -14,7 +14,7 @@ public:
 	const void Afficher();
 	bool faireTomberCondiments();
 	void genererCondiment();
-	void toString(int sorte);
+	string toString(int sorte);
 	int getlisteV(int i);
 	int getLongeurL();
 	Personnage getPersonne();
