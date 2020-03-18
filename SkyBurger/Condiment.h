@@ -12,12 +12,12 @@ struct Point {
 class Condiment
 {
 public:
-	enum SorteCondiment{ PAIN, LAITUE, TOMATE, OIGNON, BOULETTE, last};
-	Condiment(int largeur=100, int hauteur=100);
+	enum SorteCondiment{ PAIN, LAITUE, TOMATE, OIGNON, BOULETTE, POWERUP}; //IMPORTANT: Powerup doit demeurer à la fin de l'enum
+	Condiment(Point p = { 0,0 });
 	Condiment(SorteCondiment sorte, Point position);
 	Condiment(const Condiment &c);
 	ostream& afficher(ostream& out);
-	char toString();
+	virtual char toString();
 	friend ostream& operator<<(ostream& out, Condiment c);
 	SorteCondiment getSorte();
 	void setSorte(SorteCondiment sorte);

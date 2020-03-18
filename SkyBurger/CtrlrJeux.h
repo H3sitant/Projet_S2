@@ -2,6 +2,7 @@
 #include "VueJeux.h"
 #include "Personnage.h"
 #include "Condiment.h"
+#include "Powerup.h"
 #include <list>
 using namespace std;
 
@@ -12,6 +13,7 @@ public:
 	~CtrlrJeux();
 	void ActionDeplacer(int direction);
 	const void Afficher();
+	void activerPower(Powerup::SortePowerup sortePow);
 	bool faireTomberCondiments();
 	void genererCondiment();
 	string toString(int sorte);
@@ -19,6 +21,7 @@ public:
 	int getLongeurL();
 	Personnage getPersonne();
 private:
+	static const int PROBPOWERUP = 10;
 	VueJeux vue;
 	Personnage personnage;
 	list<Condiment*> fallingCondiments;

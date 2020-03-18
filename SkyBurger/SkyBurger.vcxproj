@@ -150,6 +150,7 @@
     <ClCompile Include="Condiment.cpp" />
     <ClCompile Include="CtrlrJeux.cpp" />
     <ClCompile Include="CtrlrMenu.cpp" />
+    <ClCompile Include="Powerup.cpp" />
     <ClCompile Include="SkyBurger.cpp" />
     <ClCompile Include="Personnage.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="CtrlrJeux.h" />
     <ClInclude Include="CtrlrMenu.h" />
     <ClInclude Include="Personnage.h" />
+    <ClInclude Include="Powerup.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SkyBurger.h" />
     <ClInclude Include="VueJeux.h" />
