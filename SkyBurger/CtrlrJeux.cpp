@@ -4,18 +4,21 @@
 using namespace std;
 
 
-CtrlrJeux::CtrlrJeux()
+CtrlrJeux::CtrlrJeux(int score)
 {
 	 hauteur = vue.getHauteur();
 	 largeur = vue.getLargeur();
 	 personnage = Personnage(int(largeur/2));
-	 liste_longeur = (rand() % 10)+1;
+	 //La longueure de la recette est par rapport au score/niveau)
+	 score + 2 < 10 ? liste_longeur = (score + 2):liste_longeur=(9);
 	 for (int i = 0; i < liste_longeur; i++)
 	 {
-		 listeV[i] = ((rand() % 4) + 1);
-		 cout << listeV[i] << endl;
+		 do {
+			 recette[i] = Condiment();
+		 } while (recette[i].getSorte() == Condiment::PAIN);
+		 cout << recette[i] << endl;
 	 }
-	 listeV[liste_longeur - 1] = 0;
+	 recette[liste_longeur - 1] = Condiment(Condiment::PAIN,Point());
 	 //Jeu_Actif = true;
 }
 CtrlrJeux::~CtrlrJeux()
@@ -37,7 +40,7 @@ const void CtrlrJeux::Afficher()
 		affichage+= "Liste en orde des condiments : ";
 		for (int i = 0; i < liste_longeur; i++)
 		{
-			affichage+= toString(listeV[i]);
+			affichage+= (recette[i]).toString();
 		}
 		affichage += "\n";
 		for (int i = hauteur - 1; i >= 0; i--) {
@@ -80,8 +83,8 @@ bool CtrlrJeux::faireTomberCondiments() {
 		list<Condiment*> cpyFalling(fallingCondiments);
 		for (Condiment* c : cpyFalling) {
 			if (c->getPosition().y == personnage.getHauteur() && c->getPosition().x == personnage.getPosition()) {
-				Condiment* copy(c);
-					personnage.ajouterCondiment(copy);
+				//Condiment* copy(c);
+					personnage.ajouterCondiment(c);
 					fallingCondiments.remove(c);
 					if (c->getSorte() == 0)
 					{
@@ -99,31 +102,9 @@ void CtrlrJeux::genererCondiment() {
 	fallingCondiments.push_back(new Condiment(largeur, hauteur));
 }
 
-string CtrlrJeux::toString(int sorte) {
-	switch (sorte) {
-	case 1:
-		return "L ";
-	case 2:
-		return "T ";
-		
-	case 3:
-		return "O ";
-		
-	case 0:
-		return "P ";
-		
-	case 4:
-		return "B ";
-		
-	default:
-		return "e ";
-		
-	}
-}
-
-int CtrlrJeux::getlisteV(int i)
+Condiment CtrlrJeux::getlisteV(int i)
 {
-	return listeV[i];
+	return recette[i];
 }
 
 int CtrlrJeux::getLongeurL()

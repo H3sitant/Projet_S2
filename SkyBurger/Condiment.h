@@ -13,7 +13,7 @@ class Condiment
 {
 public:
 	enum SorteCondiment{ PAIN, LAITUE, TOMATE, OIGNON, BOULETTE, last};
-	Condiment(int largeur, int hauteur);
+	Condiment(int largeur=100, int hauteur=100);
 	Condiment(SorteCondiment sorte, Point position);
 	Condiment(const Condiment &c);
 	ostream& afficher(ostream& out);

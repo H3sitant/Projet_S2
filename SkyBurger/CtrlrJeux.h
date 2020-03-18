@@ -8,14 +8,14 @@ using namespace std;
 class CtrlrJeux
 {
 public:
-	CtrlrJeux();
+	CtrlrJeux(int score);
 	~CtrlrJeux();
 	void ActionDeplacer(int direction);
 	const void Afficher();
 	bool faireTomberCondiments();
 	void genererCondiment();
 	string toString(int sorte);
-	int getlisteV(int i);
+	Condiment getlisteV(int i);
 	int getLongeurL();
 	Personnage getPersonne();
 private:
@@ -25,7 +25,7 @@ private:
 	int hauteur;
 	int largeur;
 	int liste_longeur;
-	int listeV[10];
+	Condiment recette[10];
 
 };
 

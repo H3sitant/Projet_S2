@@ -1,15 +1,21 @@
 #include "Condiment.h"
 #include <math.h>
 #include <ctime>
+#include <iostream>
 
 
  
-
+//Constructeur avec des valeurs alléatoires en passant en paramètres les données de largeur et de hauteur de l'écran
 Condiment::Condiment(int largeur, int hauteur) {
-	srand(time(NULL));
-	this->position.y = hauteur-1;
-	this->position.x = rand() % largeur;
-	sorte = static_cast<SorteCondiment>(rand() % last);
+	try {
+		if (largeur <= 0 || hauteur <= 0) throw invalid_argument("Largeur ou hauteur égale à zéro");
+		this->position.y = hauteur - 1;
+		this->position.x = rand() % largeur;
+		sorte = static_cast<SorteCondiment>(rand() % last);
+	}
+	catch (invalid_argument e) {
+		cerr << e.what();
+	}
 }
 
 Condiment::Condiment(SorteCondiment sorte, Point position) {

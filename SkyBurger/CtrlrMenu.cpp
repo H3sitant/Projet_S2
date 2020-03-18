@@ -100,7 +100,7 @@ bool CtrlrMenu::victoire(CtrlrJeux jeux)
         for (Condiment* c : jeux.getPersonne().getCondiments())
         {
 
-            if (jeux.getlisteV(i) != c->getSorte())
+            if (jeux.getlisteV(i).getSorte() != c->getSorte())
             {
                 //cout << jeux.getlisteV(i) << endl;
                 //cout << c->getSorte()<<endl;

@@ -36,12 +36,15 @@ void clear_screen(char fill = ' ') {
 }
 int main()
 {
+    //initialisation du random
+    srand((unsigned)time(NULL));
     int exit = 0;
     int score = 0;
+  
+    CtrlrMenu menu;
     while (exit!=2) 
     {
-        CtrlrJeux ctrlrJeux;
-        CtrlrMenu menu;
+        CtrlrJeux ctrlrJeux(score);
         //thread t1(Afficher);
         int touche;
         exit = false;
