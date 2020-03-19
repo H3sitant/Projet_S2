@@ -13,7 +13,7 @@ public:
 	~CtrlrJeux();
 	void ActionDeplacer(int direction);
 	const void Afficher();
-	void activerPower(Powerup::SortePowerup sortePow);
+	void activerPower(Powerup powerup);
 	bool faireTomberCondiments();
 	void genererCondiment();
 	string toString(int sorte);
@@ -21,7 +21,10 @@ public:
 	int getLongeurL();
 	Personnage getPersonne();
 private:
-	static const int PROBPOWERUP = 10;
+	static const int PROBPOWERUP = 5;
+	static const int TEMPS_MAX_POWERUP =10;
+	void activerRainbow();
+	void verifierPowerups();
 	VueJeux vue;
 	Personnage personnage;
 	list<Condiment*> fallingCondiments;
@@ -29,6 +32,8 @@ private:
 	int largeur;
 	int liste_longeur;
 	Condiment recette[10];
+	char powerUpActif = NULL;
+	int tempsRestantPowerup = 0;
 
 };
 

@@ -23,6 +23,10 @@ list<Condiment*> Personnage::getCondiments()
 {
 	return condiments;
 }
+
+void Personnage::retirerTop() {
+	condiments.pop_back();
+}
 void Personnage::setCondiments(list<Condiment*> newCondiments)
 {
 	condiments = newCondiments;

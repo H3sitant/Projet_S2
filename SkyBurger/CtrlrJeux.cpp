@@ -40,6 +40,22 @@ const void CtrlrJeux::Afficher()
 		Personnage cpyPersonnage = personnage.copy();
 		list<Condiment*> cpyFalling(fallingCondiments);
 		string affichage = "";
+		affichage += "Powerup actif: ";
+		switch (powerUpActif)
+		{
+		case 'S':
+			affichage += "Star	";
+			affichage += "Temps restant: " + tempsRestantPowerup;
+			break;
+		case 'R':
+			affichage += "Rainbow	";
+			affichage += "Temps restant: " + tempsRestantPowerup;
+			break;
+		default:
+			affichage += "Aucun	";
+			break;
+		}
+		affichage += '\n';
 		affichage+= "Liste en orde des condiments : ";
 		for (int i = 0; i < liste_longeur; i++)
 		{
@@ -76,17 +92,71 @@ const void CtrlrJeux::Afficher()
 		cout << affichage;
 }
 
-void CtrlrJeux::activerPower(Powerup::SortePowerup sortePow)
+void CtrlrJeux::activerPower(Powerup powerup)
 {
 	cout << "Powerup activé!";
 	//TODO Coder les différentes effets des powerups
-	switch (sortePow) {
-	case Powerup::STAR:
-		break;
-	case Powerup::RAINBOW:
-		break;
-	case Powerup::POTION:
-		break;
+	switch (powerup.getSortePow()) {
+		case Powerup::STAR:
+			powerUpActif = powerup.toString();
+			tempsRestantPowerup = TEMPS_MAX_POWERUP;
+			break;
+		case Powerup::RAINBOW:
+			powerUpActif = powerup.toString();
+			tempsRestantPowerup = TEMPS_MAX_POWERUP;
+			activerRainbow();
+			break;
+		case Powerup::POTION:
+			//Retire le dernier condiment de la pile du joueur
+			//Powerup de type passif -> application immédiate
+			if (!personnage.getCondiments().empty()) {
+				personnage.retirerTop();
+			}
+			break;
+		default:
+			throw (invalid_argument("Type de powerup non pris en charge"));
+	}
+}
+//Pouvoir transformant tous les condiments en
+//le prochain élément nécessaire à la recette
+void CtrlrJeux::activerRainbow() {
+	int i = 0;
+	bool pileIsGood = true;
+	Condiment::SorteCondiment condimentVoulu;
+	for (Condiment *c : personnage.getCondiments()) {
+		if (c->getSorte() != recette[i].getSorte()) {
+			pileIsGood = false;
+		}
+		i++;
+	}
+	if (pileIsGood){
+		condimentVoulu = recette[i].getSorte();
+		for (Condiment *c : fallingCondiments) {
+			c->setSorte(condimentVoulu);
+		}
+	}
+	else //On transforme les condiments en potion pour permettre au joueur de corriger ses erreurs
+	{
+		for (Condiment* c : fallingCondiments) {
+			c = new Powerup(Powerup::POTION, c->getPosition());
+		}
+	}
+}
+
+void CtrlrJeux::verifierPowerups() {
+	if (powerUpActif != NULL) {
+		if (tempsRestantPowerup-- > 0) {
+			switch (powerUpActif) {
+				case 'R': //Rainbow
+					activerRainbow();
+					break;
+				default:
+					throw invalid_argument("Type de PowerUp non pris en charge");
+				}
+		}
+		else {
+			powerUpActif = NULL;
+		}
 	}
 }
 
@@ -109,7 +179,7 @@ bool CtrlrJeux::faireTomberCondiments() {
 						p = dynamic_cast<Powerup*> (c);
 						if (p) //vérifie que le cast s'est bien passé
 						{
-							activerPower(p->getSortePow());
+							activerPower(*p);
 							break;
 						}
 					case Condiment::PAIN:

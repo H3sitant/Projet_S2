@@ -15,6 +15,7 @@ public:
 	int getPosition();
 	void setPosition(int newPosition);
 	list<Condiment*> getCondiments();
+	void retirerTop();
 	void setCondiments(list<Condiment*> condiments);
 	void deplacer(int direction, int largeur);
 	int getHauteur();
