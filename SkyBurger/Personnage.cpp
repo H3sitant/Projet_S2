@@ -25,7 +25,12 @@ list<Condiment*> Personnage::getCondiments()
 }
 
 void Personnage::retirerTop() {
-	condiments.pop_back();
+	for (auto c : condiments) {
+		if (c->getPosition().y == condiments.size()) {
+			condiments.remove(c);
+			break;
+		}
+	}
 }
 void Personnage::mixBurger()
 {
@@ -86,7 +91,7 @@ void Personnage::deplacer(int direction, int largeur)
 		c->setPositionX(position);
 	}
 }
-int Personnage::getHauteur()
+int Personnage::getHauteurBurger()
 {
 	return condiments.size()+1;
 }

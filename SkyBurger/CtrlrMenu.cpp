@@ -94,7 +94,7 @@ void CtrlrMenu::Afficher()
 bool CtrlrMenu::victoire(CtrlrJeux jeux)
 {
     bool vic = true;
-    if (jeux.getLongeurL() == jeux.getPersonne().getHauteur()-1)
+    if (jeux.getLongeurL() == jeux.getPersonne().getHauteurBurger()-1)
     {
         int i = 0;
         for (Condiment* c : jeux.getPersonne().getCondiments())

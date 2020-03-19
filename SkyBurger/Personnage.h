@@ -19,7 +19,7 @@ public:
 	void mixBurger();
 	void setCondiments(list<Condiment*> condiments);
 	void deplacer(int direction, int largeur);
-	int getHauteur();
+	int getHauteurBurger();
 	char toString();
 	void ajouterCondiment(Condiment* c);
 	Personnage copy();

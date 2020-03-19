@@ -46,11 +46,17 @@ const void CtrlrJeux::Afficher()
 		{
 		case 'S':
 			affichage += "Star	";
-			affichage += "Temps restant: " + to_string(tempsRestantPowerup);
+			affichage += "Temps restant: ";
+			for (int i = 0; i < tempsRestantPowerup; i++) {
+				affichage += "|";
+			}
 			break;
 		case 'R':
 			affichage += "Rainbow	";
-			affichage += "Temps restant: " + to_string(tempsRestantPowerup);
+			affichage += "Temps restant: ";
+			for (int i = 0; i < tempsRestantPowerup; i++) {
+				affichage += "|";
+			}
 			break;
 		default:
 			affichage += "Aucun	";
@@ -181,7 +187,7 @@ bool CtrlrJeux::faireTomberCondiments() {
 		
 		list<Condiment*> cpyFalling(fallingCondiments);
 		for (Condiment* c : cpyFalling) {
-			if (c->getPosition().y == personnage.getHauteur() && c->getPosition().x == personnage.getPosition()) {
+			if (c->getPosition().y == personnage.getHauteurBurger() && c->getPosition().x == personnage.getPosition()) {
 				//Condiment* copy(c);
 					fallingCondiments.remove(c);
 					Powerup* p;
