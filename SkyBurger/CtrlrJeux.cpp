@@ -1,5 +1,6 @@
 #include "CtrlrJeux.h"
 #include <iostream>
+#include <string>
 
 
 using namespace std;
@@ -45,11 +46,11 @@ const void CtrlrJeux::Afficher()
 		{
 		case 'S':
 			affichage += "Star	";
-			affichage += "Temps restant: " + tempsRestantPowerup;
+			affichage += "Temps restant: " + to_string(tempsRestantPowerup);
 			break;
 		case 'R':
 			affichage += "Rainbow	";
-			affichage += "Temps restant: " + tempsRestantPowerup;
+			affichage += "Temps restant: " + to_string(tempsRestantPowerup);
 			break;
 		default:
 			affichage += "Aucun	";
@@ -129,20 +130,22 @@ void CtrlrJeux::activerRainbow() {
 		}
 		i++;
 	}
+	list<Condiment*> newFalling;
 	if (pileIsGood){
 		condimentVoulu = recette[i].getSorte();
 		for (Condiment *c : fallingCondiments) {
-			c->setSorte(condimentVoulu);
+			newFalling.push_back(new Condiment(condimentVoulu, c->getPosition()));
 		}
 	}
 	else //On transforme les condiments en potion pour permettre au joueur de corriger ses erreurs
 	{
 		for (Condiment* c : fallingCondiments) {
-			c = new Powerup(Powerup::POTION, c->getPosition());
+			newFalling.push_back(new Powerup(Powerup::POTION, c->getPosition()));
 		}
 	}
+	fallingCondiments = newFalling;
 }
-
+//Verifie si un powerup est actif et applique son effet
 void CtrlrJeux::verifierPowerups() {
 	if (powerUpActif != NULL) {
 		if (tempsRestantPowerup-- > 0) {
@@ -163,6 +166,7 @@ void CtrlrJeux::verifierPowerups() {
 bool CtrlrJeux::faireTomberCondiments() {
 	bool finjeu = false;
 	if (!fallingCondiments.empty()) {
+		verifierPowerups();
 		for (Condiment* c : fallingCondiments) {
 			c->deplacer(bas);
 		}

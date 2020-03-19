@@ -1,7 +1,7 @@
 #include "VueJeux.h"
 VueJeux::VueJeux()
 {
-	Largeur = 20;
+	Largeur = 30;
 	Hauteur = 20;
 }
 VueJeux::~VueJeux()

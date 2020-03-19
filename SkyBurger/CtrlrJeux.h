@@ -21,7 +21,7 @@ public:
 	int getLongeurL();
 	Personnage getPersonne();
 private:
-	static const int PROBPOWERUP = 5;
+	static const int PROBPOWERUP = 2;
 	static const int TEMPS_MAX_POWERUP =10;
 	void activerRainbow();
 	void verifierPowerups();
