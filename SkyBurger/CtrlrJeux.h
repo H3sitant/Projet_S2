@@ -22,7 +22,9 @@ public:
 	Personnage getPersonne();
 private:
 	static const int PROBPOWERUP = 2;
+	static const int PROB_CORONA = 5;
 	static const int TEMPS_MAX_POWERUP =10;
+	bool coronaVirusMode = true;
 	void activerRainbow();
 	void verifierPowerups();
 	VueJeux vue;

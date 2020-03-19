@@ -16,6 +16,7 @@ public:
 	void setPosition(int newPosition);
 	list<Condiment*> getCondiments();
 	void retirerTop();
+	void mixBurger();
 	void setCondiments(list<Condiment*> condiments);
 	void deplacer(int direction, int largeur);
 	int getHauteur();

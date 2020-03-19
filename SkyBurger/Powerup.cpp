@@ -28,6 +28,9 @@ char Powerup::toString()
 	case POTION:
 		return 'M'; //Comme dans magique
 		break;
+	case CORONA:
+		return 'C';
+		break;
 	default:
 		return 'e';
 		break;

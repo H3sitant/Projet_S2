@@ -99,8 +99,8 @@ void CtrlrJeux::activerPower(Powerup powerup)
 	//TODO Coder les différentes effets des powerups
 	switch (powerup.getSortePow()) {
 		case Powerup::STAR:
-			powerUpActif = powerup.toString();
-			tempsRestantPowerup = TEMPS_MAX_POWERUP;
+			//powerUpActif = powerup.toString();
+			//tempsRestantPowerup = TEMPS_MAX_POWERUP;
 			break;
 		case Powerup::RAINBOW:
 			powerUpActif = powerup.toString();
@@ -114,10 +114,18 @@ void CtrlrJeux::activerPower(Powerup powerup)
 				personnage.retirerTop();
 			}
 			break;
+		case Powerup::CORONA:
+			//Le corona fait le bordel et mélange le burger constitué
+			personnage.mixBurger();
+			break;
 		default:
 			throw (invalid_argument("Type de powerup non pris en charge"));
 	}
 }
+
+
+
+
 //Pouvoir transformant tous les condiments en
 //le prochain élément nécessaire à la recette
 void CtrlrJeux::activerRainbow() {
@@ -193,6 +201,13 @@ bool CtrlrJeux::faireTomberCondiments() {
 					}
 					
 			}else if (c->getPosition().y<0) fallingCondiments.remove(c);
+			else if (coronaVirusMode & c->getPosition().y == int(hauteur / 2)) {//Les éléments qui passent la moitié de l'écran on des chances de se transformer en virus
+				if (rand() % PROB_CORONA==0) {
+					Condiment* contaminedCondiment = new Powerup(Powerup::CORONA, c->getPosition());
+					fallingCondiments.push_back(contaminedCondiment);
+					fallingCondiments.remove(c);
+				}
+			}
 		}
 	}
 	return finjeu;

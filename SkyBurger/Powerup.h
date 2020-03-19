@@ -2,7 +2,7 @@
 #include "Condiment.h"
  class Powerup : public Condiment {
 public:
-    enum SortePowerup{STAR, RAINBOW, POTION, last};
+    enum SortePowerup{STAR, RAINBOW, POTION, CORONA, last}; //Last doit rester en dernier
     Powerup(SortePowerup sorte, Point position);
     Powerup();
     char toString();
